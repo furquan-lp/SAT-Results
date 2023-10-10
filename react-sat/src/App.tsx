@@ -132,13 +132,20 @@ function ViewTable() {
   );
 }
 
+function SwitchViews({ mode }: { mode: string }) {
+  switch (mode) {
+    case 'view': return <ViewTable />
+    default: return <h1 className='m-2 text-lg'>Unknown view: {mode}</h1>;
+  }
+}
+
 function App() {
   const [viewMode, setViewMode] = useState<string>('view');
 
   return (
     <main>
       <Header setMode={setViewMode} />
-      <ViewTable />
+      <SwitchViews mode={viewMode} />
     </main>
   );
 }
