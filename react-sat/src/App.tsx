@@ -6,6 +6,7 @@ import ViewRank from "./components/ViewRank";
 import ViewDelete from "./components/ViewDelete";
 import ViewUpdate from "./components/ViewUpdate";
 import ViewInsert from "./components/ViewInsert";
+import Footer from "./components/Footer";
 
 function SwitchViews({ mode, searchTerm }: { mode: string, searchTerm: string }) {
   switch (mode) {
@@ -23,9 +24,10 @@ function App() {
   const [searchTerm, setSearchTerm] = useState<string>('');
 
   return (
-    <main>
+    <main className='min-h-screen'>
       <Header setMode={setViewMode} mode={viewMode} setSearch={setSearchTerm} />
       <SwitchViews mode={viewMode} searchTerm={searchTerm} />
+      <Footer />
     </main>
   );
 }
