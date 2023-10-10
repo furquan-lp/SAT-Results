@@ -1,9 +1,12 @@
+import { useState } from "react";
 import Header from "./components/Header";
 
 function App() {
+  const [viewMode, setViewMode] = useState<string>('view');
+  console.log(viewMode)
   return (
     <main>
-      <Header />
+      <Header setMode={setViewMode} />
     </main>
   );
 }
