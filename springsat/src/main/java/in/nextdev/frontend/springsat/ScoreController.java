@@ -27,4 +27,14 @@ public class ScoreController {
     SatResult newResult(@RequestBody SatResult newResult) {
         return repo.save(newResult);
     }
+
+    @GetMapping("/results/{name}")
+    SatResult oneResult(@PathVariable String name) {
+        SatResult result = repo.findByName(name);
+        if (result == null) {
+            throw new NameNotFoundException(name);
+        } else {
+            return result;
+        }
+    }
 }
