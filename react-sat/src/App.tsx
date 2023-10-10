@@ -134,17 +134,21 @@ function ViewTable() {
 
 function SwitchViews({ mode }: { mode: string }) {
   switch (mode) {
-    case 'view': return <ViewTable />
+    case 'view': return <ViewTable />;
+    case 'get': return <></>;
     default: return <h1 className='m-2 text-lg'>Unknown view: {mode}</h1>;
   }
 }
 
 function App() {
   const [viewMode, setViewMode] = useState<string>('view');
+  const [searchTerm, setSearchTerm] = useState<string>('');
+
+  console.log('search', searchTerm)
 
   return (
     <main>
-      <Header setMode={setViewMode} />
+      <Header setMode={setViewMode} mode={viewMode} setSearch={setSearchTerm} />
       <SwitchViews mode={viewMode} />
     </main>
   );
