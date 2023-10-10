@@ -22,7 +22,7 @@ function SwitchViews({ mode, searchTerm }: { mode: string, searchTerm: string })
 function App() {
   const [viewMode, setViewMode] = useState<string>('view');
   const [searchTerm, setSearchTerm] = useState<string>('');
-
+  console.log(`${import.meta.env.VITE_BACKEND_URL}`)
   return (
     <main className='min-h-screen'>
       <Header setMode={setViewMode} mode={viewMode} setSearch={setSearchTerm} />

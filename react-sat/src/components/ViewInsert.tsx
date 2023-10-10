@@ -53,7 +53,7 @@ export default function ViewInsert() {
   const handleSubmit = () => {
     if (validateSATRef(currentSATResult.current)) {
       (async () => {
-        let tx = await fetch(`http://localhost:8080/results`, {
+        let tx = await fetch(`${import.meta.env.VITE_BACKEND_URL}/results`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(currentSATResult.current)
