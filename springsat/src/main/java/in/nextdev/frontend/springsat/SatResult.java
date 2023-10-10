@@ -11,6 +11,17 @@ public class SatResult {
     private int score;
     private long pincode;
 
+    public SatResult() {}
+
+    public SatResult(String name, String address, String city, String country, int score, long pincode) {
+        this.name = name;
+        this.address = address;
+        this.city = city;
+        this.country = country;
+        this.score = score;
+        this.pincode = pincode;
+    }
+
     public String getName() {
         return name;
     }
@@ -63,14 +74,9 @@ public class SatResult {
         return score > 30;
     }
 
-    public SatResult() {}
-
-    public SatResult(String name, String address, String city, String country, int score, long pincode) {
-        this.name = name;
-        this.address = address;
-        this.city = city;
-        this.country = country;
-        this.score = score;
-        this.pincode = pincode;
+    @Override
+    public String toString() {
+        return String.format("Result{id=%d, name=\'%s\', address=\'%s\', city=\'%s\', country=\'%s\', score=%d, pincode=%d, passed=%b}",
+        id, name, address, city, country, score, pincode, passed());
     }
 }
