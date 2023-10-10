@@ -1,8 +1,8 @@
-export default function Header() {
+export default function Header({ setMode }: { setMode: Function }) {
   return (
     <header className='flex justify-between bg-slate-600 text-white p-2 m-2'>
       <span className='md:text-2xl font-mono select-none'>SAT_Result</span>
-      <select className='bg-slate-500 p-1'>
+      <select className='bg-slate-500 p-1' onChange={(e) => setMode(e.target.value)}>
         <option value='view'>View all data</option>
         <option value='insert'>Insert data</option>
         <option value='get'>Get rank</option>
