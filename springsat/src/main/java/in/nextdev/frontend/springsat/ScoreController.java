@@ -2,6 +2,7 @@ package in.nextdev.frontend.springsat;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin
 @RestController
 public class ScoreController {
     public static class ScoreBody {
@@ -61,6 +63,11 @@ public class ScoreController {
 
     @DeleteMapping("/results/{name}")
     void deleteSatResult(@PathVariable String name) {
-        repo.deleteById(repo.findByName(name).getId());
+        SatResult toDelete = repo.findByName(name);
+        if (toDelete == null) {
+            throw new NameNotFoundException(name);
+        } else {
+            repo.deleteById(toDelete.getId());
+        }
     }
 }
