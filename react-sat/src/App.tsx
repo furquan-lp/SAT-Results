@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import Header from "./components/Header";
 import ViewTable from "./components/ViewTable";
 import ViewRank from "./components/ViewRank";
-
 
 function SwitchViews({ mode, searchTerm }: { mode: string, searchTerm: string }) {
   switch (mode) {
