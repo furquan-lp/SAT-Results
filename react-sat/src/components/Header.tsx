@@ -1,5 +1,13 @@
 import { useRef } from "react";
 
+function getButtonLabel(mode: string): string {
+  switch (mode) {
+    case 'delete': return 'Delete';
+    case 'update': return 'Update';
+    default: return 'Search';
+  }
+}
+
 export default function Header({ setMode, setSearch, mode }: { setMode: Function, setSearch: Function, mode: string }) {
   let searchQuery = useRef('');
   return (
@@ -11,7 +19,7 @@ export default function Header({ setMode, setSearch, mode }: { setMode: Function
             <input type='text' placeholder='Type a name to search...' className='p-1 my-0.5 text-slate-700'
               onChange={(e) => searchQuery.current = e.target.value} />
             <button className='bg-slate-500 hover:bg-slate-400 px-3 h-8 text-lg'
-              onClick={() => setSearch(searchQuery.current)}>{mode === 'delete' ? <>Delete</> : <>Search</>}</button>
+              onClick={() => setSearch(searchQuery.current)}>{getButtonLabel(mode)}</button>
           </span> : null}
 
       </span>
