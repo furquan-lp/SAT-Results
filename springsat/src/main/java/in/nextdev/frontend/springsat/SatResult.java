@@ -70,13 +70,13 @@ public class SatResult {
         this.pincode = pincode;
     }
 
-    public boolean passed() {
+    public boolean getPassed() {
         return score > 30;
     }
 
     @Override
     public String toString() {
         return String.format("Result{id=%d, name=\'%s\', address=\'%s\', city=\'%s\', country=\'%s\', score=%d, pincode=%d, passed=%b}",
-        id, name, address, city, country, score, pincode, passed());
+        id, name, address, city, country, score, pincode, getPassed());
     }
 }
