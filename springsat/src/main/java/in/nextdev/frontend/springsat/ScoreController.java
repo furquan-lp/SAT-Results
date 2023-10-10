@@ -12,6 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ScoreController {
+    public static class ScoreBody {
+        private int score;
+        public ScoreBody() {}
+        public ScoreBody(int score) { this.score = score; }
+        public int getScore() { return score; }
+        public void setScore(int score) { this.score = score; }
+    }
+
     private final ScoreRepository repo;
 
     public ScoreController(ScoreRepository repo) {
@@ -39,13 +47,13 @@ public class ScoreController {
     }
 
     @PutMapping("/results/{name}")
-    SatResult updateResult(@RequestBody int score, @PathVariable String name) {
+    SatResult updateResult(@RequestBody ScoreBody scoreBody, @PathVariable String name) {
         SatResult result = repo.findByName(name);
         if (result == null) {
             throw new NameNotFoundException(name);
         } else {
             return repo.findById(result.getId()).map(satresult -> {
-                satresult.setScore(score);
+                satresult.setScore(scoreBody.getScore());
                 return repo.save(satresult);
             }).orElseThrow(() -> new NameNotFoundException(name));
         }
