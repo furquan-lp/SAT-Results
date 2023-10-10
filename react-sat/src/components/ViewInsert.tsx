@@ -45,9 +45,6 @@ export default function ViewInsert() {
   }>({
     name: '', address: '', city: '', country: '', pincode: -1, score: -1
   });
-  const [SATResult, setSATResult] = useState<{
-    name: string, address: string, city: string, country: string, pincode: number, score: number
-  } | null>(null);
   const [submitted, setSubmitted] = useState<number | null>(null);
 
   const handleSubmit = () => {
