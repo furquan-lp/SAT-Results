@@ -16,8 +16,6 @@ function App() {
   const [viewMode, setViewMode] = useState<string>('view');
   const [searchTerm, setSearchTerm] = useState<string>('');
 
-  console.log('search', searchTerm)
-
   return (
     <main>
       <Header setMode={setViewMode} mode={viewMode} setSearch={setSearchTerm} />
