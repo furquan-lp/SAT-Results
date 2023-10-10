@@ -37,4 +37,17 @@ public class ScoreController {
             return result;
         }
     }
+
+    @PutMapping("/results/{name}")
+    SatResult updateResult(@RequestBody int score, @PathVariable String name) {
+        SatResult result = repo.findByName(name);
+        if (result == null) {
+            throw new NameNotFoundException(name);
+        } else {
+            return repo.findById(result.getId()).map(satresult -> {
+                satresult.setScore(score);
+                return repo.save(satresult);
+            }).orElseThrow(() -> new NameNotFoundException(name));
+        }
+    }
 }
