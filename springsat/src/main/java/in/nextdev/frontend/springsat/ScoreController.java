@@ -50,4 +50,9 @@ public class ScoreController {
             }).orElseThrow(() -> new NameNotFoundException(name));
         }
     }
+
+    @DeleteMapping("/results/{name}")
+    void deleteSatResult(@PathVariable String name) {
+        repo.deleteById(repo.findByName(name).getId());
+    }
 }
