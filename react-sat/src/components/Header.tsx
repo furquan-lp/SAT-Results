@@ -35,7 +35,7 @@ export default function Header({ setMode, setSearch, mode }: { setMode: Function
           </span> : null}
 
       </span>
-      <select className='bg-slate-500 p-1' onChange={(e) => {
+      <select className='bg-slate-500 px-1 md:py-1' onChange={(e) => {
         setMode(e.target.value);
         setSearch('');
       }}>
