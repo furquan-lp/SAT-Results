@@ -18,6 +18,7 @@ function SubmitButton({ submitted, handleSubmit }: { submitted: number | null, h
         Submit
       </button>
     );
+
   } else if (submitted === 1) {
     return (
       <button className='bg-slate-400 px-2 p-1 shadow text-white mt-6' disabled>
@@ -28,6 +29,12 @@ function SubmitButton({ submitted, handleSubmit }: { submitted: number | null, h
     return (
       <button className='bg-red-400 px-2 p-1 shadow text-white mt-6' disabled>
         Server Error
+      </button>
+    );
+  } else if (submitted === 2) {
+    return (
+      <button className='bg-slate-500 px-2 p-1 shadow text-white mt-6' disabled>
+        Submitting
       </button>
     );
   } else {
@@ -50,6 +57,7 @@ export default function ViewInsert() {
   const handleSubmit = () => {
     if (validateSATRef(currentSATResult.current)) {
       (async () => {
+        setSubmitted(2);
         let tx = await fetch(`${import.meta.env.VITE_BACKEND_URL}/results`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -73,7 +81,7 @@ export default function ViewInsert() {
   }
 
   return (
-    <article className='flex flex-col mx-2 my-6 md:mx-28 xl:mx-80 2xl:mx-96 gap-y-2 p-4 bg-slate-100 shadow
+    <article className='flex flex-col mx-1 my-6 md:mx-28 xl:mx-80 2xl:mx-96 gap-y-2 p-4 bg-slate-100 shadow
      items-center text-lg'>
       <h1 className='text-xl font-bold mb-2'>Enter Candidate Details</h1>
       <span className='flex gap-x-5 w-full items-center'>Name:<input className='p-1 w-full border'

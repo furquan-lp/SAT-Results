@@ -20,8 +20,8 @@ export default function ViewTable() {
   const TABLE_ROWS = tableData;
   return (
     <>
-      {tableData === null ? <span className='mx-2 my-4 text-lg'>Fetching...</span> :
-        <Card className="h-full overflow-scroll mx-2 shadow">
+      {tableData === null ? <span className='mx-1 my-2 md:mx-2 md:my-4 text-lg'>Fetching...</span> :
+        <Card className="h-full overflow-scroll mx-1 md:mx-2 shadow">
           <table className="w-full min-w-max table-auto text-left">
             <thead>
               <tr>
