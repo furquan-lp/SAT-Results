@@ -18,6 +18,7 @@ function SubmitButton({ submitted, handleSubmit }: { submitted: number | null, h
         Submit
       </button>
     );
+
   } else if (submitted === 1) {
     return (
       <button className='bg-slate-400 px-2 p-1 shadow text-white mt-6' disabled>
@@ -28,6 +29,12 @@ function SubmitButton({ submitted, handleSubmit }: { submitted: number | null, h
     return (
       <button className='bg-red-400 px-2 p-1 shadow text-white mt-6' disabled>
         Server Error
+      </button>
+    );
+  } else if (submitted === 2) {
+    return (
+      <button className='bg-slate-500 px-2 p-1 shadow text-white mt-6' disabled>
+        Submitting
       </button>
     );
   } else {
@@ -50,6 +57,7 @@ export default function ViewInsert() {
   const handleSubmit = () => {
     if (validateSATRef(currentSATResult.current)) {
       (async () => {
+        setSubmitted(2);
         let tx = await fetch(`${import.meta.env.VITE_BACKEND_URL}/results`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
