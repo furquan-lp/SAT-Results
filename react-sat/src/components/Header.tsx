@@ -11,9 +11,9 @@ function getPlaceholder(mode: string): string {
 
 function SearchButton({ mode, onClick }: { mode: string, onClick: MouseEventHandler }) {
   switch (mode) {
-    case 'delete': return <button className='flex items-center p-2 bg-slate-500 hover:bg-slate-400'
+    case 'delete': return <button className='flex items-center p-2 bg-amber-600 hover:bg-amber-500'
       onClick={onClick}><FiDelete /></button>;
-    case 'update': return <button className='flex items-center p-2 bg-slate-500 hover:bg-slate-400'
+    case 'update': return <button className='flex items-center p-2 bg-teal-500 hover:bg-teal-400'
       onClick={onClick}><FiCheck /></button>;
     default: return <button className='flex items-center p-2 bg-slate-500 hover:bg-slate-400' onClick={onClick}>
       <FiSearch />
