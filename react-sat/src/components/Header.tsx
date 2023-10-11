@@ -1,5 +1,5 @@
 import { MouseEventHandler, useRef } from "react";
-import { FiSearch, FiDelete, FiCheck, FiX } from 'react-icons/fi';
+import { FiSearch, FiDelete, FiCheck, FiGithub } from 'react-icons/fi';
 
 function getPlaceholder(mode: string): string {
   switch (mode) {
@@ -35,16 +35,20 @@ export default function Header({ setMode, setSearch, mode }: { setMode: Function
           </span> : null}
 
       </span>
-      <select className='bg-slate-500 px-1 md:py-1' onChange={(e) => {
-        setMode(e.target.value);
-        setSearch('');
-      }}>
-        <option value='view'>View all data</option>
-        <option value='insert'>Insert data</option>
-        <option value='get'>Get rank</option>
-        <option value='update'>Update score</option>
-        <option value='delete'>Delete data</option>
-      </select>
+      <span className='flex md:gap-x-1'>
+        <select className='bg-slate-500 px-1 md:py-1' onChange={(e) => {
+          setMode(e.target.value);
+          setSearch('');
+        }}>
+          <option value='view'>View all data</option>
+          <option value='insert'>Insert data</option>
+          <option value='get'>Get rank</option>
+          <option value='update'>Update score</option>
+          <option value='delete'>Delete data</option>
+        </select>
+        <a className='hidden md:flex items-center p-2 bg-slate-700 hover:bg-slate-500'
+          href='https://github.com/furquan-lp/SAT-Results'><FiGithub /></a>
+      </span>
     </header>
   );
 }
