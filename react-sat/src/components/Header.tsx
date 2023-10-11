@@ -13,7 +13,7 @@ export default function Header({ setMode, setSearch, mode }: { setMode: Function
   return (
     <header className='flex justify-between bg-slate-600 text-white p-2 m-2'>
       <span className='flex items-center justify-center gap-3'>
-        <span className='md:text-2xl font-mono select-none'>SAT Result</span>
+        <span className='hidden md:block md:text-2xl font-mono select-none'>SAT Result</span>
         {mode === 'get' || mode === 'update' || mode === 'delete'
           ? <span className='flex gap-1 items-center'>
             <input type='text' placeholder='Type a name to search...' className='p-1 my-0.5 text-slate-700'
