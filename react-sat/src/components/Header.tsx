@@ -24,7 +24,7 @@ function SearchButton({ mode, onClick }: { mode: string, onClick: MouseEventHand
 export default function Header({ setMode, setSearch, mode }: { setMode: Function, setSearch: Function, mode: string }) {
   let searchQuery = useRef('');
   return (
-    <header className='flex justify-between bg-slate-600 text-white p-2 m-2'>
+    <header className='flex justify-between bg-slate-600 text-white p-2 m-1 md:m-2'>
       <span className='flex items-center justify-center gap-3'>
         <span className='hidden md:block md:text-2xl font-mono select-none'>SAT Result</span>
         {mode === 'get' || mode === 'update' || mode === 'delete'
