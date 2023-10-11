@@ -21,7 +21,7 @@ export default function ViewTable() {
   return (
     <>
       {tableData === null ? <span className='mx-2 my-4 text-lg'>Fetching...</span> :
-        <Card className="h-full overflow-scroll mx-2 rounded-md shadow">
+        <Card className="h-full overflow-scroll mx-2 shadow">
           <table className="w-full min-w-max table-auto text-left">
             <thead>
               <tr>

@@ -45,7 +45,7 @@ export default function ViewRank({ term }: { term: string }) {
       return <div className='mx-2 my-6 text-slate-400'>No results found.</div>;
     } else {
       return (
-        <article className='flex flex-col mx-2 md:my-6 md:mx-96 bg-slate-100 shadow p-4 rounded-md text-lg'>
+        <article className='flex flex-col mx-2 md:my-6 md:mx-96 bg-slate-100 shadow p-4 text-lg'>
           <span className='text-center text-xl bg-white rounded-md p-1 mb-2'>Rank: {rank}</span>
           <span>Name: {currentResult.name}</span>
           <span>Address: {currentResult.address}</span>
