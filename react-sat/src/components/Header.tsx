@@ -1,11 +1,11 @@
 import { MouseEventHandler, useRef } from "react";
 import { FiSearch, FiDelete, FiCheck, FiX } from 'react-icons/fi';
 
-function getButtonLabel(mode: string): string {
+function getPlaceholder(mode: string): string {
   switch (mode) {
-    case 'delete': return 'Delete';
-    case 'update': return 'Update';
-    default: return 'Search';
+    case 'delete': return 'Type a name to delete...';
+    case 'update': return 'Type a name to update...';
+    default: return 'Type a name to search...';
   }
 }
 
@@ -29,7 +29,7 @@ export default function Header({ setMode, setSearch, mode }: { setMode: Function
         <span className='hidden md:block md:text-2xl font-mono select-none'>SAT Result</span>
         {mode === 'get' || mode === 'update' || mode === 'delete'
           ? <span className='flex gap-1 items-center'>
-            <input type='text' placeholder='Type a name to search...' className='p-1 my-0.5 text-slate-700'
+            <input type='text' placeholder={getPlaceholder(mode)} className='p-1 my-0.5 text-slate-700'
               onChange={(e) => searchQuery.current = e.target.value} />
             <SearchButton mode={mode} onClick={() => setSearch(searchQuery.current)} />
           </span> : null}
