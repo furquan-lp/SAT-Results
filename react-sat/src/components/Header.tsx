@@ -1,10 +1,23 @@
-import { useRef } from "react";
+import { MouseEventHandler, useRef } from "react";
+import { FiSearch, FiDelete, FiCheck, FiX } from 'react-icons/fi';
 
 function getButtonLabel(mode: string): string {
   switch (mode) {
     case 'delete': return 'Delete';
     case 'update': return 'Update';
     default: return 'Search';
+  }
+}
+
+function SearchButton({ mode, onClick }: { mode: string, onClick: MouseEventHandler }) {
+  switch (mode) {
+    case 'delete': return <button className='flex items-center p-2 bg-slate-500 hover:bg-slate-400'
+      onClick={onClick}><FiDelete /></button>;
+    case 'update': return <button className='flex items-center p-2 bg-slate-500 hover:bg-slate-400'
+      onClick={onClick}><FiCheck /></button>;
+    default: return <button className='flex items-center p-2 bg-slate-500 hover:bg-slate-400' onClick={onClick}>
+      <FiSearch />
+    </button>;
   }
 }
 
@@ -18,8 +31,7 @@ export default function Header({ setMode, setSearch, mode }: { setMode: Function
           ? <span className='flex gap-1 items-center'>
             <input type='text' placeholder='Type a name to search...' className='p-1 my-0.5 text-slate-700'
               onChange={(e) => searchQuery.current = e.target.value} />
-            <button className='bg-slate-500 hover:bg-slate-400 px-3 h-8 text-lg'
-              onClick={() => setSearch(searchQuery.current)}>{getButtonLabel(mode)}</button>
+            <SearchButton mode={mode} onClick={() => setSearch(searchQuery.current)} />
           </span> : null}
 
       </span>
