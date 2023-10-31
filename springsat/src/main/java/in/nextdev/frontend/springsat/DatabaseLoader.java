@@ -32,15 +32,12 @@ public class DatabaseLoader {
       "Alok Kumar","O-12, Sector-18","Ghaziabad",73,201005
       "Pooja Singh","P-13, Sector-19","Noida",88,201301
       "Saurabh Gupta","Q-14, Sector-20","Ghaziabad",79,201005
-      "Anjali Singh","R-15, Sector-21","Noida",94,201301
-      "Rajesh Kumar","S-16, Sector-22","Ghaziabad",77,201005
-      "Shivani Gupta","T-17, Sector-23","Noida",86,201301
-      "Vikas Sharma","U-18, Sector-24","Ghaziabad",66,201005
-      "Rashmi Singh","V-19, Sector-25","Noida",95,201301
-      "Rahul Verma","W-20, Sector-26","Ghaziabad",71,201005
-      "Kavita Singh","X-21, Sector-27","Noida",84,201301
-      "Ankit Gupta","Y-22,Sector 28A ","Ghaziabad",81,201005
-      "Sneha Sharma ","Z -23,Sector 29 ","Noida ",89,201301
+      "Vikas Verma","U-18, Sector-24","Ghaziabad",66,201005
+      "Rashmi Kumar","V-19, Sector-25","Noida",95,201301
+      "Rahul Raj","W-20, Sector-26","Ghaziabad",71,201005
+      "Kavita Sharma","X-21, Sector-27","Noida",84,201301
+      "Ankit Mandal","Y-22,Sector 28A ","Ghaziabad",81,201005
+      "Sneha Kumari ","Z -23,Sector 29 ","Noida ",89,201301
       """;
 
   @Bean
