@@ -1,10 +1,16 @@
 package in.nextdev.frontend.springsat;
 
+import java.io.IOException;
+import java.io.StringReader;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import com.opencsv.CSVReader;
 
 @Configuration
 public class DatabaseLoader {
@@ -39,14 +45,31 @@ public class DatabaseLoader {
 
   @Bean
   CommandLineRunner initDatabase(ScoreRepository repository) {
-    return args -> {
-      log.info("Preloading " + repository.save(new SatResult("Syed Ahmad", "Ashok Rajpath", "Patna",
-          "India", 23, 800004)));
-      log.info("Preloading "
-          + repository.save(new SatResult("John Doe", "Nowhere Street", "The City", "NewLand",
-              73, 80085)));
-      log.info("Preloading " + repository.save(new SatResult("Jane Doe", "Shinjuku Street", "Tokyo",
-          "Japan", 82, 1000001)));
-    };
+    try (CSVReader reader = new CSVReader(new StringReader(STUDENTS_CSV))) {
+      try {
+        List<String[]> lines = reader.readAll();
+        return args -> {
+          log.info("Preloading " + repository.save(new SatResult("Syed Ahmad", "Ashok Rajpath", "Patna",
+              "India", 23, 800004)));
+          log.info("Preloading "
+              + repository.save(new SatResult("John Doe", "Nowhere Street", "The City", "NewLand",
+                  73, 80085)));
+          log.info("Preloading " + repository.save(new SatResult("Jane Doe", "Shinjuku Street", "Tokyo",
+              "Japan", 82, 1000001)));
+          if (lines != null) {
+            for (String[] l : lines) {
+              log.info("Preloading CSV value " + repository.save(new SatResult(l[0], l[1], l[2], "India",
+                  Integer.parseInt(l[3]), Long.parseLong(l[4]))));
+            }
+          }
+        };
+      } catch (IOException ioe) {
+        System.err.println("IOException occurred while reading from the Students CSV,");
+        ioe.printStackTrace(System.err);
+      }
+    } catch (IOException ioe) {
+      ioe.printStackTrace(System.err);
+    }
+    return null;
   }
 }
