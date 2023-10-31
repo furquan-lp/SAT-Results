@@ -21,8 +21,11 @@ function SearchButton({ mode, onClick }: { mode: string, onClick: MouseEventHand
   }
 }
 
-export default function Header({ setMode, setSearch, mode }: { setMode: Function, setSearch: Function, mode: string }) {
-  let searchQuery = useRef('');
+export default function Header({ setMode, setSearch, mode }: {
+  setMode: React.Dispatch<React.SetStateAction<string>>,
+  setSearch: React.Dispatch<React.SetStateAction<string>>, mode: string
+}) {
+  const searchQuery = useRef('');
   return (
     <header className='flex justify-between bg-slate-600 text-white p-2 m-1 md:m-2'>
       <span className='flex items-center justify-center gap-3'>

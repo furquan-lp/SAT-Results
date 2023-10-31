@@ -10,8 +10,8 @@ export default function ViewTable() {
 
   useEffect(() => {
     (async () => {
-      let tx = await fetch(`${import.meta.env.VITE_BACKEND_URL}/results`);
-      let data = await tx.json();
+      const tx = await fetch(`${import.meta.env.VITE_BACKEND_URL}/results`);
+      const data = await tx.json();
       setTableData(data);
     })();
   }, []);

@@ -24,7 +24,7 @@ export default function ViewUpdate({ searchTerm }: { searchTerm: string }) {
 
   useEffect(() => {
     (async () => {
-      let tx = await fetch(`${import.meta.env.VITE_BACKEND_URL}/results/${searchTerm}`, {
+      const tx = await fetch(`${import.meta.env.VITE_BACKEND_URL}/results/${searchTerm}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ score: newScore })

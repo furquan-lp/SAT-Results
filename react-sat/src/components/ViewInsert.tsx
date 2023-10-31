@@ -47,7 +47,7 @@ function SubmitButton({ submitted, handleSubmit }: { submitted: number | null, h
 }
 
 export default function ViewInsert() {
-  let currentSATResult = useRef<{
+  const currentSATResult = useRef<{
     name: string, address: string, city: string, country: string, pincode: number, score: number,
   }>({
     name: '', address: '', city: '', country: '', pincode: -1, score: -1
@@ -58,7 +58,7 @@ export default function ViewInsert() {
     if (validateSATRef(currentSATResult.current)) {
       (async () => {
         setSubmitted(2);
-        let tx = await fetch(`${import.meta.env.VITE_BACKEND_URL}/results`, {
+        const tx = await fetch(`${import.meta.env.VITE_BACKEND_URL}/results`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(currentSATResult.current)
