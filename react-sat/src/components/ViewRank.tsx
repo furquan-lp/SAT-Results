@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 async function computeRank(name: string): Promise<number> {
   let data: any[] = [];
-  let tx = await fetch(`${import.meta.env.VITE_BACKEND_URL}/results`);
+  const tx = await fetch(`${import.meta.env.VITE_BACKEND_URL}/results`);
   if (tx.status === 200) {
     data = await tx.json();
     data.sort((e1, e2) => {
@@ -29,7 +29,7 @@ export default function ViewRank({ term }: { term: string }) {
 
     useEffect(() => {
       (async () => {
-        let tx = await fetch(`${import.meta.env.VITE_BACKEND_URL}/results/${term}`);
+        const tx = await fetch(`${import.meta.env.VITE_BACKEND_URL}/results/${term}`);
         if (tx.status === 200) {
           let data = await tx.json();
           setCurrentResult(data);

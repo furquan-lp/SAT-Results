@@ -5,7 +5,7 @@ export default function ViewDelete({ searchTerm }: { searchTerm: string }) {
 
   useEffect(() => {
     (async () => {
-      let tx = await fetch(`${import.meta.env.VITE_BACKEND_URL}/results/${searchTerm}`, {
+      const tx = await fetch(`${import.meta.env.VITE_BACKEND_URL}/results/${searchTerm}`, {
         method: "DELETE"
       });
       if (tx.status === 200) {
