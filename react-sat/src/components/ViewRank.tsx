@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-
 async function computeRank(name: string): Promise<number> {
   let data: any[] = [];
   const tx = await fetch(`${import.meta.env.VITE_BACKEND_URL}/results`);
@@ -9,7 +8,7 @@ async function computeRank(name: string): Promise<number> {
     data.sort((e1, e2) => {
       return e1.score > e2.score ? -1 : 1;
     });
-    let index = data.indexOf(data.find(e => e.name === name));
+    const index = data.indexOf(data.find(e => e.name === name));
     console.log('i was', index)
     return index >= 0 ? index + 1 : -1;
   } else {
@@ -31,9 +30,9 @@ export default function ViewRank({ term }: { term: string }) {
       (async () => {
         const tx = await fetch(`${import.meta.env.VITE_BACKEND_URL}/results/${term}`);
         if (tx.status === 200) {
-          let data = await tx.json();
+          const data = await tx.json();
           setCurrentResult(data);
-          let r = await computeRank(term);
+          const r = await computeRank(term);
           setRank(r);
         } else {
           setCurrentResult(null);

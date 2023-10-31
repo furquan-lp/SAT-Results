@@ -47,7 +47,7 @@ function SubmitButton({ submitted, handleSubmit }: { submitted: number | null, h
 }
 
 export default function ViewInsert() {
-  let currentSATResult = useRef<{
+  const currentSATResult = useRef<{
     name: string, address: string, city: string, country: string, pincode: number, score: number,
   }>({
     name: '', address: '', city: '', country: '', pincode: -1, score: -1
