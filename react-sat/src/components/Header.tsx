@@ -22,7 +22,7 @@ function SearchButton({ mode, onClick }: { mode: string, onClick: MouseEventHand
 }
 
 export default function Header({ setMode, setSearch, mode }: {
-  setMode: Function,
+  setMode: React.Dispatch<React.SetStateAction<string>>,
   setSearch: React.Dispatch<React.SetStateAction<string>>, mode: string
 }) {
   const searchQuery = useRef('');
